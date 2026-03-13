@@ -17,7 +17,7 @@ public class UserService {
     }
 
     public UserDto createUser(UserDto input){
-        log.info("Creating user {}",input);
+        //log.info("Creating user {}",input);
         final User createdUser = User.builder()
                 .name(input.getName())
                 .surname(input.getSurname())
