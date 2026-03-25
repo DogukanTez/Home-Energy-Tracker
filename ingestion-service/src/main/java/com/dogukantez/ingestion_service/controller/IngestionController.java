@@ -1,6 +1,7 @@
 package com.dogukantez.ingestion_service.controller;
 
 import com.dogukantez.ingestion_service.dto.EnergyUsageDto;
+import com.dogukantez.ingestion_service.service.IngestionService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
