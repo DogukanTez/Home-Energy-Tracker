@@ -1,6 +1,7 @@
 package com.dogukantez.usage_service.service;
 
 import com.dogukantez.kafka.event.EnergyUsageEvent;
+import com.dogukantez.usage_service.client.DeviceClient;
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.domain.WritePrecision;
 import com.influxdb.client.write.Point;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class UsageService {
 
     private InfluxDBClient influxDBClient;
+    private DeviceClient deviceClient;
 
     @Value("${influx.bucket}")
     private String influxBucket;
@@ -21,8 +23,9 @@ public class UsageService {
     @Value("${influx.org}")
     private String influxOrg;
 
-    public UsageService(InfluxDBClient influxDBClient) {
+    public UsageService(InfluxDBClient influxDBClient,DeviceClient deviceClient) {
         this.influxDBClient = influxDBClient;
+        this.deviceClient=deviceClient;
     }
 
     @KafkaListener(topics = "energy-usage", groupId = "usage-service")
